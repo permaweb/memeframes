@@ -96,11 +96,12 @@ end
 )
 
 -- GetInfo
-Handlers.prepend("Get-Info", function (m) return m.Action = "Get-Info" end, function (m)
+Handlers.prepend("Get-Info", function (m) return m.Action == "Get-Info" end, function (m)
   Send({
     Target = m.From,
-    Data = Manpage
+    Data = Manpage(Name)
   })
+  print('Send Info to ' .. m.From)
 end)
 
 
