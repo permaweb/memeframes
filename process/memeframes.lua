@@ -18,7 +18,9 @@ BuyToken = "Sa0iBLPNyJQrwpTTG-tWLQU-1QeUAJA73DdxGGiKoJc"
 MaxMint = 1000000
 Minted = 0
 -- INITIAL FRAME ID
-FrameID = Inbox[1].FrameID 
+FrameID = FrameID or Inbox[1].FrameID 
+-- INITIAL NAME
+MEMEFRAME_NAME = MEMEFRAME_NAME or Inbox[1]["MemeFrame-Name"]
 VoteLength = 30 * 24
 
 local function refund(sender, amt)
