@@ -18,7 +18,7 @@ BuyToken = "Sa0iBLPNyJQrwpTTG-tWLQU-1QeUAJA73DdxGGiKoJc"
 MaxMint = 1000000
 Minted = 0
 -- INITIAL FRAME ID
-FrameID = "vADWSIgQd8EpBjHgZTxii_ucwE6sndk12cCcEUoUXRk"
+FrameID = "XFvaK9uJOBzU55sx3MG5aBeDNs8x1PIeOkN8PQY4atc"
 VoteLength = 30 * 24
 
 local function refund(sender, amt)
@@ -67,7 +67,7 @@ Handlers.prepend(
     Send({
       Target = m.From,
       Action = "Frame-Response",
-      Frame = FrameID
+      Data = FrameID
     })
     print("Sent FrameID: " .. FrameID)
   end
@@ -122,7 +122,7 @@ function(msg)
   for id, voteInfo in pairs(Votes) do
       if currentHeight >= voteInfo.deadline then
           if voteInfo.yay > voteInfo.nay then
-              if not voteInfo.command and voteInfo.command == "" then
+              if voteInfo.command == "" then
                 FrameID = voteInfo.ID
               else
                 -- TODO: Test that command execution runs with the right scope?

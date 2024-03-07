@@ -11,21 +11,29 @@
     const { dryrun } = connect();
 
     async function getWebsite(processId) {
-      const result = await dryrun({
-        process: processId,
-        data: 'Get-Frame',
-      });
-      console.log(result)
-      return result.Messages[0]
+      try {
+        const result = await dryrun({
+          process: processId,
+          tags: [
+            { name: 'Action', value: "Get-Frame" }
+          ]
+        });
+        console.log(result)
+        return result.Messages[0]
+      } catch (e) {
+        console.log(e)
+        return "XFvaK9uJOBzU55sx3MG5aBeDNs8x1PIeOkN8PQY4atc"
+      }
     }
 
 
     (async () => {
-      const processId = 'xCbRW3GKUqkTs2dPfTbE-09x4zbYqh6FaiUfaBo0TB0';
+      // get process id
+      let processId = await fetch(window.location.href).then(res => res.headers.get('x-arns-resolved-id'))
+      if (!processId) {
+        processId = window.location.href.split('/')[3]
+      }
       const processResponse = await getWebsite(processId);
-
-      console.log(processResponse)
-
       const website = await fetch(`https://arweave.net/${processResponse.Data}/data`)
       const websiteData = await website.text();
 
