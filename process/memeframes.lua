@@ -116,7 +116,7 @@ function (msg)
   return "continue"
 end,
 function(msg)
-  local currentHeight = tonumber(msg['Block-Height']) + 10000000
+  local currentHeight = tonumber(msg['Block-Height'])
   
   -- Process voting
   for id, voteInfo in pairs(Votes) do
