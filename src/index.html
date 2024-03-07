@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script defer type="module">
+
+    import { connect } from "https://unpkg.com/@permaweb/aoconnect";
+
+    const { dryrun } = connect();
+
+    async function getWebsite(processId) {
+      const result = await dryrun({
+        process: processId,
+        data: 'Get-Frame',
+      });
+      console.log(result)
+      return result.Messages[0]
+    }
+
+
+    (async () => {
+      const processId = 'xCbRW3GKUqkTs2dPfTbE-09x4zbYqh6FaiUfaBo0TB0';
+      const processResponse = await getWebsite(processId);
+
+      console.log(processResponse)
+
+      const website = await fetch(`https://arweave.net/${processResponse.Data}/data`)
+      const websiteData = await website.text();
+
+      document.getElementById('body').innerHTML = websiteData;
+    })();
+  </script>
+</head>
+
+<body id="body"></body>
+
+</html>
