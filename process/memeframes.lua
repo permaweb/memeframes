@@ -10,6 +10,10 @@
 > .load-blueprint staking
 
 > .load process/memeframes.lua
+
+Get-Info - Manpage
+Get-Votes - return
+
 ]]
 
 Votes = Votes or {}
@@ -22,6 +26,45 @@ FrameID = FrameID or Inbox[1].FrameID
 -- INITIAL NAME
 MEMEFRAME_NAME = MEMEFRAME_NAME or Inbox[1]["MemeFrame-Name"]
 VoteLength = 30 * 24
+
+function Manpage (name) 
+  return string.format([[
+  
+  # MemeFrames: %s
+
+  Join the MemeFrame community. Mint MemeFrame Tokens using $CRED, then Stake them for voting on the Webpage to show
+    on the MemeFrame page.
+
+  ## Meme
+
+  `MEME = "%s"`
+
+  ## Mint
+
+  ```
+  Send({Target = CRED, Action = "Transfer", Quantity = "1000", Recipient = MEME  })
+  ```
+
+  ## Stake
+
+  ```
+  Send({Target = MEME, Action = "Stake", Quantity = "1000", UnstakeDelay = "1000"})
+  ```
+
+  ## Vote
+
+  ```
+  Send({Target = MEME, Action = "Vote", Side = "yay", TXID = "{TXID}" })
+  ```
+
+  ## Get-Votes
+
+  ```
+  Send({Target = MEME, Action = "Get-Votes"})
+  ```
+
+]], name, ao.id)
+end
 
 local function refund(sender, amt)
   -- return unused tokens
@@ -39,6 +82,26 @@ local function announce(msg, pids)
   end, pids)
 end
 
+
+-- GetVotes
+Handlers.prepend("Get-Votes", function (m) 
+  return m.Action == "Get-Votes"
+end, function (m)
+  Send({
+    Target = m.From,
+    Data = require('json').encode(Votes) 
+  }) 
+  print("Sent Votes to caller")
+end
+)
+
+-- GetInfo
+Handlers.prepend("Get-Info", function (m) return m.Action = "Get-Info" end, function (m)
+  Send({
+    Target = m.From,
+    Data = Manpage
+  })
+end)
 
 
 -- MINT
