@@ -30,3 +30,29 @@ Then in aos:
 ```
 
 Change 'MEMEFRAME_NAME' to your preferred name unless you want your community to rally under a particularly stupid name.
+
+## User Staking and voting
+
+Set MemeFrame Address
+
+```lua
+MEMEFRAME = "{Your MemeFrame Address}"
+```
+
+First the users need CRED and should transfer the CRED to your MemeFrams
+
+```lua
+Send({Target = CRED, Action = "Transfer", Quanity = "1000", Recipient = MEMEFRAME})
+```
+
+Stake
+
+```lua
+Send({Target = MEMEFRAME, Action = "Stake", Quantity = "1000", UnstakeDelay = "1000" })
+```
+
+Vote to change the FRAME
+
+```lua
+Send({ Target = MEMEFRAME, Action = "Vote", Side = "yay", TXID="..." })
+```
