@@ -18,7 +18,7 @@ BuyToken = "Sa0iBLPNyJQrwpTTG-tWLQU-1QeUAJA73DdxGGiKoJc"
 MaxMint = 1000000
 Minted = 0
 -- INITIAL FRAME ID
-FrameID = "XFvaK9uJOBzU55sx3MG5aBeDNs8x1PIeOkN8PQY4atc"
+FrameID = Inbox[1].FrameID 
 VoteLength = 30 * 24
 
 local function refund(sender, amt)
@@ -36,6 +36,8 @@ local function announce(msg, pids)
     Send({Target = pid, Data = msg })
   end, pids)
 end
+
+
 
 -- MINT
 Handlers.prepend(
