@@ -6,8 +6,10 @@ The MemeFrame's DAO also retains the treasury of $CRED tokens used in minting. T
 
 ## Requirements
 - Node version 20.
+- aos - `npm i -g https://get_ao.g8way.io`
 - A sense of humor.
 - $CRED to burn. They will probably all go to zero.
+
 
 ## Deploying
 
@@ -56,3 +58,8 @@ Vote to change the FRAME
 ```lua
 Send({ Target = MEMEFRAME, Action = "Vote", Side = "yay", TXID="..." })
 ```
+
+## Need Help
+
+[Support channel in AO Discord](https://discord.gg/J6kQXpdPG3)
+[Cookbook](https://cookbook_ao.g8way.io)
