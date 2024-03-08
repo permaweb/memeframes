@@ -15,7 +15,7 @@ Get-Info - Manpage
 Get-Votes - return
 
 ]]
-
+local json = require('json')
 Votes = Votes or {}
 -- $CRED
 BuyToken = "Sa0iBLPNyJQrwpTTG-tWLQU-1QeUAJA73DdxGGiKoJc"
@@ -27,7 +27,7 @@ FrameID = FrameID or Inbox[1].FrameID
 MEMEFRAME_NAME = MEMEFRAME_NAME or Inbox[1]["MemeFrame-Name"]
 VoteLength = 30 * 24
 
-function Manpage (name) 
+function Man (name) 
   return string.format([[
   
   # MemeFrames: %s
@@ -89,7 +89,10 @@ Handlers.prepend("Get-Votes", function (m)
 end, function (m)
   Send({
     Target = m.From,
-    Data = require('json').encode(Votes) 
+    Data = require('json').encode(
+      Utils.map(function (k) return { tx = k, yay = Votes[k].yay, nay = Votes[k].nay, deadline = Votes[k].deadline} end ,
+       Utils.keys(Votes))
+    ) 
   }) 
   print("Sent Votes to caller")
 end
@@ -99,7 +102,7 @@ end
 Handlers.prepend("Get-Info", function (m) return m.Action == "Get-Info" end, function (m)
   Send({
     Target = m.From,
-    Data = Manpage(Name)
+    Data = Man(Name)
   })
   print('Send Info to ' .. m.From)
 end)
@@ -190,8 +193,8 @@ function(msg)
   for id, voteInfo in pairs(Votes) do
       if currentHeight >= voteInfo.deadline then
           if voteInfo.yay > voteInfo.nay then
-              if voteInfo.command == "" then
-                FrameID = voteInfo.ID
+              if not voteInfo.command then
+                FrameID = id
               else
                 -- TODO: Test that command execution runs with the right scope?
                 local func, err = load(voteInfo.command, Name, 't', _G)
