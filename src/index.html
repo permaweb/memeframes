@@ -4,6 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
   <script defer type="module">
 
     import { connect } from "https://unpkg.com/@permaweb/aoconnect";
@@ -34,10 +43,12 @@
         processId = window.location.href.split('/')[3]
       }
       const processResponse = await getWebsite(processId);
-      const website = await fetch(`https://arweave.net/${processResponse.Data}`)
-      const websiteData = await website.text();
+      //const website = await fetch(`https://arweave.net/${processResponse.Data}`)
+      //const websiteData = await website.text();
 
-      document.getElementById('body').innerHTML = websiteData;
+      document.getElementById('body').innerHTML = `
+  <iframe style="border:0;width:100%;height:100%" src="/${processResponse.Data}" />
+      `;
     })();
   </script>
 </head>
