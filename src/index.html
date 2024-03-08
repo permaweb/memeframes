@@ -34,7 +34,7 @@
         processId = window.location.href.split('/')[3]
       }
       const processResponse = await getWebsite(processId);
-      const website = await fetch(`https://arweave.net/${processResponse.Data}/data`)
+      const website = await fetch(`https://arweave.net/${processResponse.Data}`)
       const websiteData = await website.text();
 
       document.getElementById('body').innerHTML = websiteData;
