@@ -1,5 +1,5 @@
 --[[
--- MEMEFRAMES 
+-- MEMEFRAMES (Adaptation for TRUNK Token)
 -- Version: 0.1
 
 -- NOTE: Requires token blueprint and staking blueprint to be loaded in order to run.
