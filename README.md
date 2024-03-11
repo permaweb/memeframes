@@ -17,7 +17,7 @@ To deploy your MemeFrame clone this repo and run the following:
 
 ```sh
 aos --data src/index.html \
---tag-name MemeFrame-Name --tag-value aoWifHat \
+--tag-name MemeFrame-Name --tag-value TRUNK \
 --tag-name MemeFrame --tag-value MemeFrame \
 --tag-name FrameID --tag-value {default html tx id}  \
 --tag-name Content-Type --tag-value text/html
@@ -28,35 +28,34 @@ Then in aos:
 ```
 .load-blueprint token
 .load-blueprint staking
-.load process/memeframes.lua
+.load process/trunk.lua
 ```
 
-Change 'MEMEFRAME_NAME' to your preferred name unless you want your community to rally under a particularly stupid name.
 
 ## User Staking and voting
 
 Set MemeFrame Address
 
 ```lua
-MEMEFRAME = "{Your MemeFrame Address}"
+TRUNK = "{Your MemeFrame Address}"
 ```
 
 First the users need CRED and should transfer the CRED to your MemeFrams
 
 ```lua
-Send({Target = CRED, Action = "Transfer", Quanity = "1000", Recipient = MEMEFRAME})
+Send({Target = CRED, Action = "Transfer", Quanity = "1000", Recipient = TRUNK})
 ```
 
 Stake
 
 ```lua
-Send({Target = MEMEFRAME, Action = "Stake", Quantity = "1000", UnstakeDelay = "1000" })
+Send({Target = TRUNK, Action = "Stake", Quantity = "1000", UnstakeDelay = "1000" })
 ```
 
 Vote to change the FRAME
 
 ```lua
-Send({ Target = MEMEFRAME, Action = "Vote", Side = "yay", TXID="..." })
+Send({ Target = TRUNK, Action = "Vote", Side = "yay", TXID="..." })
 ```
 
 ## Need Help
