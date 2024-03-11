@@ -19,12 +19,12 @@ local json = require('json')
 Votes = Votes or {}
 -- $CRED
 BuyToken = "Sa0iBLPNyJQrwpTTG-tWLQU-1QeUAJA73DdxGGiKoJc"
-MaxMint = 1000000
+MaxMint = 10000000
 Minted = 0
 -- INITIAL FRAME ID
 FrameID = FrameID or Inbox[1].FrameID 
 -- INITIAL NAME
-MEMEFRAME_NAME = MEMEFRAME_NAME or Inbox[1]["MemeFrame-Name"]
+TRUNK = TRUNK or Inbox[1]["TRUNK"]
 VoteLength = 30 * 24
 
 function Man (name) 
@@ -32,35 +32,35 @@ function Man (name)
   
   # MemeFrames: %s
 
-  Join the MemeFrame community. Mint MemeFrame Tokens using $CRED, then Stake them for voting on the Webpage to show
-    on the MemeFrame page.
+  Join the TRUNK community. Mint $TRUNK Tokens using $CRED, then Stake them for voting on the Webpage to show
+    on the TRUNK page.
 
   ## Meme
 
-  `MEME = "%s"`
+  `TRUNK = "%s"`
 
   ## Mint
 
   ```
-  Send({Target = CRED, Action = "Transfer", Quantity = "1000", Recipient = MEME  })
+  Send({Target = CRED, Action = "Transfer", Quantity = "1000", Recipient = TRUNK  })
   ```
 
   ## Stake
 
   ```
-  Send({Target = MEME, Action = "Stake", Quantity = "1000", UnstakeDelay = "1000"})
+  Send({Target = TRUNK, Action = "Stake", Quantity = "1000", UnstakeDelay = "1000"})
   ```
 
   ## Vote
 
   ```
-  Send({Target = MEME, Action = "Vote", Side = "yay", TXID = "{TXID}" })
+  Send({Target = TRUNK, Action = "Vote", Side = "yay", TXID = "{TXID}" })
   ```
 
   ## Get-Votes
 
   ```
-  Send({Target = MEME, Action = "Get-Votes"})
+  Send({Target = TRUNK, Action = "Get-Votes"})
   ```
 
 ]], name, ao.id)
