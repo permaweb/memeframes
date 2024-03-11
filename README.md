@@ -18,7 +18,7 @@ To deploy your MemeFrame clone this repo and run the following:
 ```sh
 aos --data src/index.html \
 --tag-name MemeFrame-Name --tag-value TRUNK \
---tag-name MemeFrame --tag-value MemeFrame \
+--tag-name MemeFrame --tag-value TRUNK \
 --tag-name FrameID --tag-value {default html tx id}  \
 --tag-name Content-Type --tag-value text/html
 ```
