@@ -16,11 +16,7 @@ The MemeFrame's DAO also retains the treasury of $CRED tokens used in minting. T
 To deploy your MemeFrame clone this repo and run the following:
 
 ```sh
-aos trunk --data src/index.html \
---tag-name MemeFrame-Name --tag-value TRUNK \
---tag-name MemeFrame --tag-value TRUNK \
---tag-name FrameID --tag-value {default html tx id}  \
---tag-name Content-Type --tag-value text/html
+aos TRUNK --data src/index.html --tag-name MemeFrame-Name --tag-value TRUNK --tag-name MemeFrame --tag-value MemeFrame --tag-name FrameID --tag-value X5TgFGNgbje0JezztY5RL__VnYD9IieHa_9n9p0dMb0 --tag-name Content-Type --tag-value text/html
 ```
 
 Then in aos:
