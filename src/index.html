@@ -50,10 +50,9 @@
       //const websiteData = await website.text();
       const gateway = window.location.origin.split('.')[1] + "." + window.location.origin.split('.')[2]
 
-      const url = `https://${gateway}/${processResponse}`
-      document.getElementById('body').innerHTML = `
-        < iframe style = "border:0;width:100%;height:100%" src = "${url}" />
-      `;
+      const url = `https://${gateway}/${processResponse.Data}`
+
+      document.getElementById('body').innerHTML = `<iframe style = "border:0;width:100%;height:100%" src = "${url}" />`;
     })();
   </script>
 </head>
