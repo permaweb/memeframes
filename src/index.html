@@ -37,17 +37,21 @@
 
 
     (async () => {
+      let arns = false
       // get process id
       let processId = await fetch(window.location.href).then(res => res.headers.get('x-arns-resolved-id'))
       if (!processId) {
         processId = window.location.href.split('/')[3]
+      } else {
+        arns = true
       }
       const processResponse = await getWebsite(processId);
       //const website = await fetch(`https://arweave.net/${processResponse.Data}`)
       //const websiteData = await website.text();
-
+      const gateway = window.location.origin.split('.')[1] + "." + window.location.origin.split('.')[2]
+      const url = `https://${gateway}/${processResponse}
       document.getElementById('body').innerHTML = `
-  <iframe style="border:0;width:100%;height:100%" src="/${processResponse.Data}" />
+        < iframe style = "border:0;width:100%;height:100%" src = "${url}" />
       `;
     })();
   </script>
