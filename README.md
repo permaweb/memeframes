@@ -44,7 +44,7 @@ MEMEFRAME = "{Your MemeFrame Address}"
 First the users need CRED and should transfer the CRED to your MemeFrams
 
 ```lua
-Send({Target = CRED, Action = "Transfer", Quanity = "1000", Recipient = MEMEFRAME})
+Send({Target = CRED, Action = "Transfer", Quantity = "1000", Recipient = MEMEFRAME})
 ```
 
 Stake
