@@ -30,12 +30,12 @@ VoteLength = 30 * 24
 function Man (name) 
   return string.format([[
   
-  # MemeFrames: %s
+  # Trunk: %s
 
   Join the TRUNK community. Mint $TRUNK Tokens using $CRED, then Stake them for voting on the Webpage to show
     on the TRUNK page.
 
-  ## Meme
+  ## TRUNK
 
   `TRUNK = "%s"`
 
