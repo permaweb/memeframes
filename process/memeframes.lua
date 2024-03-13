@@ -1,6 +1,6 @@
 --[[
 -- MEMEFRAMES 
--- Version: 0.2
+-- Version: 0.3
 
 -- NOTE: Requires token blueprint and staking blueprint to be loaded in order to run.
 
@@ -125,6 +125,7 @@ Handlers.prepend(
       if _refund > 0 and _refund <= requestedAmount then
         refund(m.Sender, refund)
       end
+      Send({Target = m.Sender, Data = "MemeMaxed"})
       return
     end
     assert(type(Balances) == "table", "Balances not found!")
