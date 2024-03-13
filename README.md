@@ -1,33 +1,4 @@
-# MemeFrames
-
-MemeFrames are permaweb pages with a DAO _inside_. Once you launch a MemeFrame, anyone can deposit testnet $CRED to mint the DAOs native token until the cap is reached (1,000 $CRED by default). After minting, token holders can vote to change the contents of their permaweb page. Add an ARNS name to it and you have a community controlled site/app.
-
-The MemeFrame's DAO also retains the treasury of $CRED tokens used in minting. Token holders can vote to use (and grow) these however they like.
-
-## Requirements
-- Node version 20.
-- aos - `npm i -g https://get_ao.g8way.io`
-- A sense of humor.
-- $CRED to burn. They will probably all go to zero.
-
-
-## Deploying
-
-To deploy your MemeFrame clone this repo and run the following:
-
-```sh
-aos TRUNK --data src/index.html --tag-name MemeFrame-Name --tag-value TRUNK --tag-name MemeFrame --tag-value MemeFrame --tag-name FrameID --tag-value X5TgFGNgbje0JezztY5RL__VnYD9IieHa_9n9p0dMb0 --tag-name Content-Type --tag-value text/html
-```
-
-Then in aos:
-
-```
-.load-blueprint token
-.load-blueprint staking
-.load process/trunk.lua
-```
-
-
+# TRUNK
 ## User Staking and voting
 
 Set MemeFrame Address
