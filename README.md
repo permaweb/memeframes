@@ -33,7 +33,7 @@ Then in aos:
 Set MemeFrame Address
 
 ```lua
-TRUNK = "{Your MemeFrame Address}"
+TRUNK = "OT9qTE2467gcozb2g8R6D6N3nQS94ENcaAIJfUzHCww"
 ```
 
 First the users need CRED and should transfer the CRED to your MemeFrams
