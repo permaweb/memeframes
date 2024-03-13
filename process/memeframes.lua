@@ -67,16 +67,6 @@ function Man (name)
 ]], name, ao.id)
 end
 
-local function refund(sender, amt)
-  -- return unused tokens
-  Send({
-    Target = BuyToken,
-    Action = "Transfer",
-    Recipient = sender,
-    Quantity = tostring(amt)
-  })
-end
-
 local function announce(msg, pids)
   Utils.map(function (pid) 
     Send({Target = pid, Data = msg })
@@ -120,12 +110,16 @@ Handlers.prepend(
     local actualAmount = requestedAmount
     -- if over limit refund difference
     if (Minted + requestedAmount) > MaxMint then
-      actualAmount = (Minted + requestedAmount) - MaxMint
-      local _refund = requestedAmount - actualAmount
-      if _refund > 0 and _refund <= requestedAmount then
-        refund(m.Sender, refund)
-      end
-      Send({Target = m.Sender, Data = "MemeMaxed"})
+      -- if not enough tokens available send a refund...
+        Send({
+          Target = BuyToken,
+          Action = "Transfer",
+          Recipient = m.Sender,
+          Quantity = tostring(requestedAmount),
+          Data = "Meme is Maxed - Refund"
+        })
+        print('send refund')
+      Send({Target = m.Sender, Data = "Meme Maxed Refund dispatched"})
       return
     end
     assert(type(Balances) == "table", "Balances not found!")
