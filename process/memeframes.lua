@@ -1,6 +1,6 @@
 --[[
 -- MEMEFRAMES 
--- Version: 0.1
+-- Version: 0.2
 
 -- NOTE: Requires token blueprint and staking blueprint to be loaded in order to run.
 
@@ -125,6 +125,7 @@ Handlers.prepend(
     assert(type(Balances) == "table", "Balances not found!")
     local prevBalance = tonumber(Balances[m.Sender]) or 0
     Balances[m.Sender] = tostring(math.floor(prevBalance + actualAmount))
+    Minted = Minted + actualAmount
     print("Minted " .. tostring(actualAmount) .. " to " .. m.Sender)
     Send({Target = m.Sender, Data = "Successfully Minted " .. actualAmount})
   end
@@ -163,16 +164,21 @@ Handlers.prepend("vote",
     assert(m.Side and (m.Side == 'yay' or m.Side == 'nay'), 'Vote yay or nay is required!')
 
     local quantity = tonumber(Stakers[m.From].amount)
-    local id = m.TXID
+    local id = m.VoteID
     local command = m.Command or ""
     
     assert(quantity > 0, "No Staked Tokens to vote")
     if not Votes[id] then
       local deadline = tonumber(m['Block-Height']) + VoteLength
-      Votes[id] = { yay = 0, nay = 0, deadline = deadline, command == command }
+      Votes[id] = { yay = quantity, nay = 0, deadline = deadline, command = command, voted = { m.From } }
     end
     if Votes[id].deadline > tonumber(m['Block-Height']) then
+      if Utils.includes(m.From, Votes[id].voted) then
+        Send({Target = m.From, Data = "Already-Voted"})
+        return
+      end
       Votes[id][m.Side] = Votes[id][m.Side] + quantity
+      table.insert(Votes[id].voted, m.From)
       print("Voted " .. m.Side .. " for " .. id)
       Send({Target = m.From, Data = "Voted"})
     else 
