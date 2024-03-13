@@ -29,7 +29,8 @@ VoteLength = 30 * 24
 
 function Man (name) 
   return string.format([[
-  
+  v1
+
   # MemeFrames: %s
 
   Join the MemeFrame community. Mint MemeFrame Tokens using $CRED, then Stake them for voting on the Webpage to show
@@ -121,6 +122,7 @@ Handlers.prepend(
     if (Minted + requestedAmount) > MaxMint then
       actualAmount = (Minted + requestedAmount) - MaxMint
       refund(m.Sender, requestedAmount - actualAmount)
+      return
     end
     assert(type(Balances) == "table", "Balances not found!")
     local prevBalance = tonumber(Balances[m.Sender]) or 0
