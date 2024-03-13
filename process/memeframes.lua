@@ -121,7 +121,10 @@ Handlers.prepend(
     -- if over limit refund difference
     if (Minted + requestedAmount) > MaxMint then
       actualAmount = (Minted + requestedAmount) - MaxMint
-      refund(m.Sender, requestedAmount - actualAmount)
+      local _refund = requestedAmount - actualAmount
+      if _refund > 0 and _refund <= requestedAmount then
+        refund(m.Sender, refund)
+      end
       return
     end
     assert(type(Balances) == "table", "Balances not found!")
