@@ -170,7 +170,7 @@ Handlers.prepend("vote",
     assert(quantity > 0, "No Staked Tokens to vote")
     if not Votes[id] then
       local deadline = tonumber(m['Block-Height']) + VoteLength
-      Votes[id] = { yay = quantity, nay = 0, deadline = deadline, command = command, voted = { m.From } }
+      Votes[id] = { yay = 0, nay = 0, deadline = deadline, command = command, voted = { } }
     end
     if Votes[id].deadline > tonumber(m['Block-Height']) then
       if Utils.includes(m.From, Votes[id].voted) then
