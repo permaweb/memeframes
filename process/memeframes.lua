@@ -55,7 +55,7 @@ function Man (name)
   ## Vote
 
   ```
-  Send({Target = MEME, Action = "Vote", Side = "yay", TXID = "{TXID}" })
+  Send({Target = MEME, Action = "Vote", Side = "yay", VoteID = "{TXID}" })
   ```
 
   ## Get-Votes
