@@ -1,5 +1,6 @@
 # TRUNK
 ## User Staking and voting
+*Note: TRUNK denomination adds 3 zeros. 1000 = 1 TRUNK
 
 Set The DAO/Token Address
 
