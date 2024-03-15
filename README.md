@@ -1,7 +1,7 @@
 # TRUNK
 ## User Staking and voting
 
-Set MemeFrame Address
+Set The DAO/Token Address
 
 ```lua
 TRUNK = "OT9qTE2467gcozb2g8R6D6N3nQS94ENcaAIJfUzHCww"
@@ -19,11 +19,22 @@ Stake
 Send({Target = TRUNK, Action = "[Stake quantity]", Quantity = "1000", UnstakeDelay = "1000" })
 ```
 
-Vote to change the FRAME
+Vote to change the FRAME/Prpose a vote to change it
 
 ```lua
-Send({ Target = TRUNK, Action = "Vote", Side = "yay", TXID="..." })
+Send({ Target = TRUNK, Action = "Vote", Side = "yay", TXID="Arweave_tx_ID_here",  VoteID = "current_vote_nonce" })
 ```
+Vote yay(yes)
+
+```lua
+Send({ Target = TRUNK, Action = "Vote", Side = "yay",  VoteID = "current_vote_nonce" })
+```
+Vote nay(no)
+
+```lua
+Send({ Target = TRUNK, Action = "Vote", Side = "nay", VoteID = "current_vote_nonce" })
+```
+
 
 ## Need Help
 
