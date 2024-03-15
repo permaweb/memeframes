@@ -16,7 +16,7 @@ Send({Target = CRED, Action = "Transfer", Quantity = "1000", Recipient = TRUNK})
 Stake
 
 ```lua
-Send({Target = TRUNK, Action = "[Stake quantity]", Quantity = "1000", UnstakeDelay = "1000" })
+Send({Target = TRUNK, Action = "[Stake quantity]", Quantity = "[Stake quantity]", UnstakeDelay = "1000" })
 ```
 Unstake
 
