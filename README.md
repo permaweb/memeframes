@@ -18,7 +18,11 @@ Stake
 ```lua
 Send({Target = TRUNK, Action = "[Stake quantity]", Quantity = "1000", UnstakeDelay = "1000" })
 ```
+Unstake
 
+```lua
+Send({Target = "OT9qTE2467gcozb2g8R6D6N3nQS94ENcaAIJfUzHCww", Action = "Unstake", Quantity = "[Unstake quantity]" })
+```
 Vote to change the FRAME/Prpose a vote to change it
 
 ```lua
