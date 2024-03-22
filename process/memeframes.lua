@@ -199,7 +199,7 @@ function(msg)
   for id, voteInfo in pairs(Votes) do
       if currentHeight >= voteInfo.deadline then
           if voteInfo.yay > voteInfo.nay then
-              if not voteInfo.command then
+              if voteInfo.command == "" then
                 FrameID = id
               else
                 -- TODO: Test that command execution runs with the right scope?
