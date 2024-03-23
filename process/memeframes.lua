@@ -131,20 +131,6 @@ Handlers.prepend(
   end
 )
 
--- GET-FRAME
-Handlers.prepend(
-  "Get-Frame",
-  Handlers.utils.hasMatchingTag("Action", "Get-Frame"),
-  function(m)
-    Send({
-      Target = m.From,
-      Action = "Frame-Response",
-      Data = FrameID
-    })
-    print("Sent FrameID: " .. FrameID)
-  end
-)
-
 local function continue(fn) 
   return function (msg) 
     local result = fn(msg)
@@ -218,3 +204,19 @@ function(msg)
   end
 end
 )
+
+-- GET-FRAME
+-- this needs to be on the top of the handlers stack!
+Handlers.prepend(
+  "Get-Frame",
+  Handlers.utils.hasMatchingTag("Action", "Get-Frame"),
+  function(m)
+    Send({
+      Target = m.From,
+      Action = "Frame-Response",
+      Data = FrameID
+    })
+    print("Sent FrameID: " .. FrameID)
+  end
+)
+
