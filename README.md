@@ -45,8 +45,3 @@ Vote nay(no) on a command like updating the MaxMint setting
 Send({ Target = TRUNK, Action = "Vote", Side = "nay", VoteID = "current_vote_nonce" })
 ```
 
-
-## Need Help
-
-[Support channel in AO Discord](https://discord.gg/J6kQXpdPG3)
-[Cookbook](https://cookbook_ao.g8way.io)
