@@ -8,12 +8,6 @@ Set The DAO/Token Address
 TRUNK = "OT9qTE2467gcozb2g8R6D6N3nQS94ENcaAIJfUzHCww"
 ```
 
-First the users need CRED and should transfer the CRED to your MemeFrams
-
-```lua
-Send({Target = CRED, Action = "Transfer", Quantity = "1000", Recipient = TRUNK})
-```
-
 Stake
 
 ```lua
