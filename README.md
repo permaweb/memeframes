@@ -13,6 +13,16 @@ Stake
 ```lua
 Send({Target = TRUNK, Action = "[Stake quantity]", Quantity = "[Stake quantity]"})
 ```
+See Staked Balance
+
+```lua
+Send({Target = TRUNK, Action = "Stakers"})
+-- wait for response
+
+TRUNKStakers = require('json').decode(Inbox[#Inbox].Data)
+
+TRUNKStakers["your_staked_address"]
+```
 Unstake
 
 ```lua
