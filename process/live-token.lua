@@ -117,3 +117,15 @@ Handlers.add('info', "Info", function(msg)
     Denomination = tostring(Denomination)
   })
 end)
+
+
+Handlers.add('totalSupply', "Total-Supply", function(msg)
+  assert(msg.From ~= ao.id, 'Cannot call Total-Supply from the same process!')
+
+  Send({
+    Target = msg.From,
+    Action = 'Total-Supply',
+    Data = TotalSupply,
+    Ticker = Ticker
+  })
+end)
