@@ -107,3 +107,13 @@ Handlers.add('balances', "Balances",
     Send({ Target = msg.From, Data = require('json').encode(Balances) }) 
   end
 )
+
+Handlers.add('info', "Info", function(msg)
+  Send({
+    Target = msg.From,
+    Name = Name,
+    Ticker = Ticker,
+    Logo = Logo,
+    Denomination = tostring(Denomination)
+  })
+end)
