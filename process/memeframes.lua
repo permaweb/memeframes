@@ -67,7 +67,7 @@ function Man (name)
 ]], name, ao.id)
 end
 
-local function announce(msg, pids)
+function announce(msg, pids)
   Utils.map(function (pid) 
     Send({Target = pid, Data = msg })
   end, pids)
