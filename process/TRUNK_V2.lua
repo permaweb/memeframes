@@ -5,14 +5,14 @@ local initialMinted = tonumber(TotalSupply) or 0
 
 Votes = Votes or {}
 BuyToken = "xU9zFkq3X2ZQ6olwNVvr1vUWIjc3kXTWr7xKQD6dh10" -- $wAR
-MaxMint = MaxMint or 42622000000000000 -- Set to 42,622.000000000000 to match the original supply
+MaxMint = MaxMint or 42622000 -- Set to 42,622.000 to match the original supply
 Multiplier = Multiplier or 1 -- Mint 1 tokens in return for one BuyToken
 Minted = Minted or initialMinted
-FrameID = FrameID or "nOXJjj_vk0Dc1yCgdWD8kti_1iHruGzLQLNNBHVpN0Y" -- iFRAME ID with ArDrive site for PlaceHolder
-Name = "TRUNK"
+FrameID = "nOXJjj_vk0Dc1yCgdWD8kti_1iHruGzLQLNNBHVpN0Y" -- iFRAME ID with ArDrive site for PlaceHolder
+Name = Name or "TRUNK"
 VoteLength = VoteLength or 670 -- ~24hours
 Threshhold = Threshhold or 0.025 -- 2.5% of supply must vote on "yay" to pass a vote
-Ticker = "TRUNK"
+Ticker = Ticker or "TRUNK"
 Logo = 'hqg-Em9DdYHYmMysyVi8LuTGF8IF_F7ZacgjYiSpj0k'
 
 function Man (name) 
@@ -31,13 +31,13 @@ function Man (name)
   ## Mint
 
   ```
-  Send({Target = "xU9zFkq3X2ZQ6olwNVvr1vUWIjc3kXTWr7xKQD6dh10", Action = "Transfer", Quantity = "1000000000000", Recipient = iFrame  })
+  Send({Target = "xU9zFkq3X2ZQ6olwNVvr1vUWIjc3kXTWr7xKQD6dh10", Action = "Transfer", Quantity = "1000", Recipient = iFrame  })
   ```
 
   ## Stake
 
   ```
-  Send({Target = iFrame, Action = "Stake", Quantity = "1000000000000", UnstakeDelay = "670"})
+  Send({Target = iFrame, Action = "Stake", Quantity = "1000", UnstakeDelay = "670"})
   ```
 
   ## Vote
@@ -55,7 +55,7 @@ function Man (name)
 ]], name, ao.id)
 end
 
-local function announce(msg, pids)
+function announce(msg, pids)
   Utils.map(function (pid) 
     Send({Target = pid, Data = msg })
   end, pids)
