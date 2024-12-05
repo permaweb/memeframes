@@ -11,7 +11,7 @@ aos --data src/index.html \
 ```
 .load-blueprint token
 .load-blueprint staking
-.load process/memeframes.lus
+.load process/memeframes.lua
 ```
 
 
